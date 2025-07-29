@@ -12,6 +12,7 @@ API_KEY = os.getenv("TRANSCRIBE_API_KEY", "1234")
 DEVICE = "cuda"
 MODEL = os.getenv("MODEL", "medium")
 HF_TOKEN = os.getenv("HF_TOKEN")  # Your Hugging Face token for diarization
+BATCH_SIZE = int(os.getenv("BATCH_SIZE", "16"))
 
 # Initialize the Flask app and allow cross-origin requests
 app = Flask(__name__)
@@ -44,7 +45,7 @@ def transcribe():
 
         # Step 1: ASR transcription
         audio = whisperx.load_audio(temp_audio.name)
-        asr_result = asr_model.transcribe(audio, batch_size=16)
+        asr_result = asr_model.transcribe(audio, BATCH_SIZE)
 
         # Step 2: (Optional) Word-level alignment for higher accuracy
         # Uncomment below if you need word-level time alignment:
@@ -69,6 +70,10 @@ def transcribe():
 
     # Return the transcription with diarization as JSON
     return jsonify({"segments": segments})
+
+@app.route('/', methods=['GET'])
+def health():
+    return "ok", 200
 
 if __name__ == "__main__":
     # Start the Flask server, listening on all network interfaces on port 5005
