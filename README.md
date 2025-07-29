@@ -1,7 +1,3 @@
-hay que aceptar las condiciones con el usuario de hugging faces y tener un token read
-https://huggingface.co/pyannote/segmentation-3.0
-https://huggingface.co/pyannote/speaker-diarization-3.1
-
 # WhisperX Diarization API (Dockerized)
 
 A production-ready REST API for **automatic speech recognition (ASR)** and **speaker diarization** using WhisperX and Pyannote, packaged in Docker for convenient deployment and GPU acceleration.
@@ -12,7 +8,7 @@ A production-ready REST API for **automatic speech recognition (ASR)** and **spe
 - 🗣️ **Speaker diarization**: Segments the transcription and labels each part according to the speaker detected (e.g., "SPEAKER_0", "SPEAKER_1", ...).
 - 🐳 **Fully containerized**: Runs in an isolated Docker container, CUDA-ready for GPU inference.
 - 🔐 **API Key protection**: Endpoint protected by an API key passed via header.
-- ⚙️ **Customizable:** Configure Whisper model (tiny, base, medium, etc.), and Hugging Face token for diarization via environment variables or `.env` file.
+- ⚙️ **Customizable:** Configure Whisper model (tiny, base, medium, etc.), and Hugging Face token for diarization via environment variables .
 - 🌍 **CORS support**: Ready for integration with n8n or other automation/orchestration tools.
 
 ---
